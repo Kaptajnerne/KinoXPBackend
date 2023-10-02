@@ -21,6 +21,6 @@ public class Movie {
 
     @ManyToOne
     @JoinColumn(name = "Theatres", referencedColumnName = "theatreID")
-    Theatres theatres;
+    Theater theater;
 
 }
