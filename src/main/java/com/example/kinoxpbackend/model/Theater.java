@@ -14,15 +14,27 @@ import java.util.Set;
 public class Theater {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int theatreID;
+    private int theaterID;
     private int theatreNumber; // changed from TheatreNumber to theatreNumber
-    private int rowNum; // changed from row to rowNum
-    private int seatNum; // changed from seat to seatNum
 
+    @ManyToMany
+    @JoinTable(
+            name = "Movie",
+            joinColumns = @JoinColumn(name = "TheaterID"),
+            inverseJoinColumns = @JoinColumn(name = "MovieID")
+    )
+    private Set<Movie> movies;
 
-    @OneToMany(mappedBy = "Movie", cascade = CascadeType.ALL, orphanRemoval = true)
+    /*@ManyToMany(mappedBy = "movies")
+    private Set<Theater> theaters;*/
+
+    @OneToMany(mappedBy = "Seat", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonBackReference
-    private Set<Movie> movies = new HashSet<>();
+    private Set<Seat> seats = new HashSet<>();
+
+    @OneToMany(mappedBy = "Show", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonBackReference
+    private Set<Show> shows = new HashSet<>();
 
 
 }
