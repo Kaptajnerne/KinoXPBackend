@@ -52,7 +52,7 @@ public class MovieController {
     public ResponseEntity<Movie> update(@PathVariable int id, @RequestBody Movie updatedMovie) {
         Optional<Movie> existingMovie = movieRepository.findById(id);
         if (existingMovie.isPresent()) {
-            updatedMovie.setId(id); //Make sure it's the right id
+            updatedMovie.setMovieID(id); //Make sure it's the right id
             Movie savedMovie = movieRepository.save(updatedMovie);
             return ResponseEntity.ok().body(savedMovie);
         } else {
