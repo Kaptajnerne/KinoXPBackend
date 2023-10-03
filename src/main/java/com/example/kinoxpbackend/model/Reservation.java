@@ -11,9 +11,10 @@ public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int ReservationID;
+    private int ReservationNumber;
 
     @ManyToOne
-    @JoinColumn(name = "Showtime", referencedColumnName = "showTimeID") // Specify column name for show association
+    @JoinColumn(name = "Showtime_Reservation", referencedColumnName = "showTimeID") // Specify column name for show association
     private ShowTime showTime;
 
 

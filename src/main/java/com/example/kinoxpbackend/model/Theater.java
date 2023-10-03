@@ -13,7 +13,7 @@ public class Theater {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int theaterID;
     private int NumberOfTheater;
-    private int seatsPrRow;
+    private int NumberOfSeats;
 
     @ManyToOne
     @JoinColumn(name = "showTime_Theater", referencedColumnName = "showTimeID")

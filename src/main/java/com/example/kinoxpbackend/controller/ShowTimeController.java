@@ -1,6 +1,6 @@
 package com.example.kinoxpbackend.controller;
 
-public class AdminController {
+public class ShowTimeController {
 
 
 }
