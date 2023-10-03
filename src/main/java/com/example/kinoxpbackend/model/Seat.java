@@ -4,6 +4,9 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Getter
 @Setter
 @Entity
@@ -11,14 +14,14 @@ public class Seat {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int seatID;
-    private int row;
-    private int seatNumber;
+    private int NumberOfRow;
+    private int NumberOfSeat;
+    private double price;
 
-    /*@ManyToOne
-    @JoinColumn(name = "theater", referencedColumnName = "theaterID")
-    private Theater theater; //
+    @ManyToMany(mappedBy = "seats")
+    private Set<ShowTime> showTimes = new HashSet<>();
 
-    @OneToOne(mappedBy = "seat", cascade = CascadeType.ALL)
-    private Ticket ticket;*/
+
+
 
 }

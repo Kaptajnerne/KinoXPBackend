@@ -4,19 +4,17 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-
 @Getter
 @Setter
 @Entity
-public class Theater {
+public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int theaterID;
-    private int NumberOfTheater;
-    private int seatsPrRow;
+    private int ReservationID;
 
     @ManyToOne
-    @JoinColumn(name = "showTime_Theater", referencedColumnName = "showTimeID")
+    @JoinColumn(name = "Showtime", referencedColumnName = "showTimeID") // Specify column name for show association
     private ShowTime showTime;
+
 
 }

@@ -23,16 +23,11 @@ public class Movie {
     private int duration; //In minutes
     private String movieImageUrl;
 
-    //@ManyToMany(mappedBy = "movies")
-    //private Set<Theater> theaters = new HashSet<>();
-/*
     @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL)
     @JsonBackReference
-    private Set<Show> shows = new HashSet<>();
+    private Set<ShowTime> shows = new HashSet<>();
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "movie")
-    @JsonBackReference
-    private Set<Ticket> tickets = new HashSet<>();*/
+
 
 
 }
