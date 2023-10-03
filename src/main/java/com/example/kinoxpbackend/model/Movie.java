@@ -23,20 +23,16 @@ public class Movie {
     private int duration; //In minutes
     private String movieImageUrl;
 
-    @ManyToMany
-    @JoinTable(
-            name = "Theater",
-            joinColumns = @JoinColumn(name = "movieID"),
-            inverseJoinColumns = @JoinColumn(name = "theaterID")
-    )
-    private Set<Theater> theaters;
-
-    @OneToMany(mappedBy = "Show", cascade = CascadeType.ALL, orphanRemoval = true)
+    //@ManyToMany(mappedBy = "movies")
+    //private Set<Theater> theaters = new HashSet<>();
+/*
+    @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL)
     @JsonBackReference
     private Set<Show> shows = new HashSet<>();
 
-    @OneToMany(mappedBy = "Ticket", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "movie")
     @JsonBackReference
-    private Set<Ticket> tickets = new HashSet<>();
+    private Set<Ticket> tickets = new HashSet<>();*/
+
 
 }

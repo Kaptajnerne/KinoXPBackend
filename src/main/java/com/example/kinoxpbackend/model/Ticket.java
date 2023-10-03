@@ -10,23 +10,24 @@ import lombok.Setter;
 public class Ticket {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
+    @Column(name = "ticket_id") // Specify column name for ticketID
     private int ticketID;
     private double price;
 
-    @ManyToOne
-    @JoinColumn(name = "Movie", referencedColumnName = "MovieId")
-    Movie movie;
+    /*@ManyToOne
+    @JoinColumn(name = "movie_id") // Specify column name for movie association
+    private Movie movie;
 
-    @OneToOne(mappedBy = "ticket")
+    @OneToOne
+    @JoinColumn(name = "seat_id") // Specify column name for seat association
     private Seat seat;
 
     @ManyToOne
-    @JoinColumn(name = "Show", referencedColumnName = "ShowId")
-    Show show;
+    @JoinColumn(name = "show", referencedColumnName = "showID") // Specify column name for show association
+    private Show show;
 
     @ManyToOne
-    @JoinColumn(name = "Theater", referencedColumnName = "TheaterId")
-    Theater theater;
+    @JoinColumn(name = "theater_id") // Specify column name for theater association
+    private Theater theater;*/
 
 }

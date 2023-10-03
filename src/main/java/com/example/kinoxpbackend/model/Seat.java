@@ -10,16 +10,15 @@ import lombok.Setter;
 public class Seat {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private int seatID;
     private int row;
     private int seatNumber;
 
-    @ManyToOne
-    @JoinColumn(name = "Theater", referencedColumnName = "theaterID")
-    Theater theater;
+    /*@ManyToOne
+    @JoinColumn(name = "theater", referencedColumnName = "theaterID")
+    private Theater theater; //
 
-    @OneToOne(mappedBy = "Seat")
-    private Ticket ticket;
+    @OneToOne(mappedBy = "seat", cascade = CascadeType.ALL)
+    private Ticket ticket;*/
 
 }

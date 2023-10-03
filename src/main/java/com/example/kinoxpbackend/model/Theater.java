@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -14,27 +15,19 @@ import java.util.Set;
 public class Theater {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ticket_id")
     private int theaterID;
-    private int theatreNumber; // changed from TheatreNumber to theatreNumber
+    private int theatreNumber;
 
-    @ManyToMany
-    @JoinTable(
-            name = "Movie",
-            joinColumns = @JoinColumn(name = "TheaterID"),
-            inverseJoinColumns = @JoinColumn(name = "MovieID")
-    )
-    private Set<Movie> movies;
+    //@ManyToMany
+    //@JoinTable(joinColumns = @JoinColumn(name = "theater_id"), inverseJoinColumns = @JoinColumn(name = "movie_id"))
+    //private Set<Movie> movies = new HashSet<>();
 
-    /*@ManyToMany(mappedBy = "movies")
-    private Set<Theater> theaters;*/
-
-    @OneToMany(mappedBy = "Seat", cascade = CascadeType.ALL, orphanRemoval = true)
+    /*@OneToMany(mappedBy = "theater", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonBackReference
     private Set<Seat> seats = new HashSet<>();
 
-    @OneToMany(mappedBy = "Show", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "theater", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonBackReference
-    private Set<Show> shows = new HashSet<>();
-
-
+    private Set<Show> shows = new HashSet<>();*/
 }

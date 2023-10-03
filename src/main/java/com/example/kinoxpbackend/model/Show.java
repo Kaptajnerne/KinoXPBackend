@@ -9,7 +9,9 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+
 
 @Getter
 @Setter
@@ -17,21 +19,19 @@ import java.util.Set;
 public class Show {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private int showID;
     private LocalDate showDate;
     private LocalTime showTime;
 
-    @ManyToOne
-    @JoinColumn(name = "Movie", referencedColumnName = "movieID")
-    Movie movie;
+    /*@ManyToOne
+    @JoinColumn(name = "movie_id", referencedColumnName = "movieID") // Corrected column names
+    private Movie movie;
 
     @ManyToOne
-    @JoinColumn(name = "Theater", referencedColumnName = "theaterID")
-    Theater theater;
+    @JoinColumn(name = "theater_id", referencedColumnName = "theaterID") // Corrected column names
+    private Theater theater;
 
-    @OneToMany(mappedBy = "Ticket", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "show", cascade = CascadeType.ALL)
     @JsonBackReference
-    private Set<Ticket> tickets = new HashSet<>();
-
+    private Set<Ticket> tickets = new HashSet<>();*/
 }
