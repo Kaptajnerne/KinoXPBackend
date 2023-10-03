@@ -1,11 +1,12 @@
 package com.example.kinoxpbackend.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -14,11 +15,19 @@ public class Movie {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int movieID;
     private String title;
     private String description;
     private int ageLimit;
     private String genre;
     private int duration; //In minutes
     private String movieImageUrl;
+
+    @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL)
+    @JsonBackReference
+    private Set<ShowTime> shows = new HashSet<>();
+
+
+
+
 }
