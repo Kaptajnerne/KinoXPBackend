@@ -26,8 +26,4 @@ public class Movie {
     @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL)
     @JsonBackReference
     private Set<ShowTime> shows = new HashSet<>();
-
-
-
-
 }

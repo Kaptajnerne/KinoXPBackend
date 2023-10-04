@@ -14,14 +14,14 @@ public class Seat {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int seatID;
-    private int NumberOfRow;
-    private int NumberOfSeat;
+    private int seat;
+    private int line; // Use proper escaping for reserved keyword
     private double price;
+    private boolean isReserved; // Renamed this to match the column name in the table
 
-    @ManyToMany(mappedBy = "seats")
-    private Set<ShowTime> showTimes = new HashSet<>();
-
-
-
-
+    @ManyToOne
+    @JoinColumn(name = "theaterID")
+    private Theater theater;
 }
+
+
