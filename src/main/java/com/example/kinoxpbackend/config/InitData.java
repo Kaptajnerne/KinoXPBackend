@@ -30,7 +30,6 @@ public class InitData implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-
         Theater smallTheater = new Theater();
         smallTheater.setSeatsPrLine(12);
         smallTheater.setNumberOfLines(20);
