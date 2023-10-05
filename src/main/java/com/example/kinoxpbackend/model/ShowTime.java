@@ -20,12 +20,10 @@ public class ShowTime {
     private LocalTime time;
 
     @ManyToOne
-    @JsonBackReference
     @JoinColumn(name = "movieID", referencedColumnName = "movieID")
     private Movie movie;
 
     @ManyToOne
-    @JsonBackReference
     @JoinColumn(name = "theaterID")
     private Theater theater;
 }

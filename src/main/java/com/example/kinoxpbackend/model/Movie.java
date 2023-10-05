@@ -21,10 +21,6 @@ public class Movie {
     private int ageLimit;
     private String genre;
     private int duration; //In minutes
-    @Column(length = 255)
+    @Column(length = 1000)
     private String movieImageUrl;
-
-    @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL)
-    @JsonBackReference
-    private Set<ShowTime> shows = new HashSet<>();
 }
