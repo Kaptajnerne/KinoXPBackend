@@ -21,6 +21,7 @@ public class Movie {
     private int ageLimit;
     private String genre;
     private int duration; //In minutes
+    @Column(length = 255)
     private String movieImageUrl;
 
     @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL)
