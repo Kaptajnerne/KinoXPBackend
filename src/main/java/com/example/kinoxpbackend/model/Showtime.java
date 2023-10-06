@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.Cascade;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -29,7 +30,7 @@ public class Showtime {
     @JoinColumn(name = "theaterID")
     private Theater theater;
 
-    @OneToMany(mappedBy = "showTime")
+    @OneToMany(mappedBy = "showTime", cascade = CascadeType.REMOVE, orphanRemoval = true)
     @JsonIgnore
     private Set<SeatShowtime> seatShowtimes = new HashSet<>();
 

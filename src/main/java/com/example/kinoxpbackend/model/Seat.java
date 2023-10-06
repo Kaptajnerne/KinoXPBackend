@@ -24,7 +24,7 @@ public class Seat {
     @JoinColumn(name = "theaterID")
     private Theater theater;
 
-    @OneToMany(mappedBy = "seat")
+    @OneToMany(mappedBy = "seat", cascade = CascadeType.REMOVE, orphanRemoval = true)
     @JsonIgnore
     private Set<SeatShowtime> seatShowtimes = new HashSet<>();
 }

@@ -60,7 +60,6 @@ public class ShowtimeController {
         }
     }
 
-
     @DeleteMapping("/{id}")
     public ResponseEntity<String> delete(@PathVariable int id) {
         Optional<Showtime> showTime = showtimeRepository.findById(id);
