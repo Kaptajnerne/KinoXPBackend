@@ -1,8 +1,12 @@
 package com.example.kinoxpbackend.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -20,9 +24,7 @@ public class Seat {
     @JoinColumn(name = "theaterID")
     private Theater theater;
 
-    @ManyToOne
-    @JoinColumn(name = "showTimeID")
-    private ShowTime showTime;
+    @OneToMany(mappedBy = "seat")
+    @JsonIgnore
+    private Set<SeatShowtime> seatShowtimes = new HashSet<>();
 }
-
-

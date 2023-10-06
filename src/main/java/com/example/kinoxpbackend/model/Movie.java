@@ -20,7 +20,7 @@ public class Movie {
     private String description;
     private int ageLimit;
     private String genre;
-    private int duration; //In minutes
+    private int duration; // In minutes
     @Column(length = 1000)
     private String movieImageUrl;
 }

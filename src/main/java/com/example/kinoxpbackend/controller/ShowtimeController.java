@@ -1,0 +1,64 @@
+package com.example.kinoxpbackend.controller;
+
+import com.example.kinoxpbackend.model.Showtime;
+import com.example.kinoxpbackend.repository.ShowtimeRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Optional;
+
+@RestController
+@RequestMapping("/showtimes")
+@CrossOrigin
+public class ShowtimeController {
+
+
+    @Autowired
+    private ShowtimeRepository showtimeRepository;
+
+    @GetMapping()
+    public ResponseEntity<List<Showtime>> findAll() {
+        List<Showtime> showtimes = showtimeRepository.findAll();
+        return ResponseEntity.ok().body(showtimes);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Showtime> findById(@PathVariable int id) {
+        Optional<Showtime> showTime = showtimeRepository.findById(id);
+        return showTime.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
+    }
+
+    @PostMapping()
+    public ResponseEntity<Showtime> create(@RequestBody Showtime showTime) {
+        Showtime createdShowtime = showtimeRepository.save(showTime);
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdShowtime);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> delete(@PathVariable int id) {
+        Optional<Showtime> showTime = showtimeRepository.findById(id);
+        if (showTime.isPresent()) {
+            showtimeRepository.deleteById(id);
+            return ResponseEntity.ok("Showtime deleted");
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Showtime> update(@PathVariable int id, @RequestBody Showtime updatedShowtime) {
+        Optional<Showtime> existingShowtime = showtimeRepository.findById(id);
+        if (existingShowtime.isPresent()) {
+            updatedShowtime.setShowtimeID(id);
+            Showtime savedShowtime = showtimeRepository.save(updatedShowtime);
+            return ResponseEntity.ok().body(savedShowtime);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+}
+
+
