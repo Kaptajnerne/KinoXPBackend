@@ -30,7 +30,7 @@ public class InitData implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-
+        //Theaters
         Theater smallTheater = new Theater();
         smallTheater.setSeatsPrLine(12);
         smallTheater.setNumberOfLines(20);
@@ -41,6 +41,8 @@ public class InitData implements CommandLineRunner {
         largeTheater.setNumberOfLines(25);
         theaterRepository.save(largeTheater);
 
+
+        //Seats
         for (int line = 1; line <= smallTheater.getNumberOfLines(); line++) {
             for (int seat = 1; seat <= smallTheater.getSeatsPrLine(); seat++) {
                 Seat s1 = new Seat();
@@ -66,6 +68,7 @@ public class InitData implements CommandLineRunner {
         }
 
 
+        //Movies
         Movie movie1 = new Movie();
         movie1.setTitle("Saw X");
         movie1.setDescription("Lots of gore");
@@ -103,6 +106,7 @@ public class InitData implements CommandLineRunner {
         movieRepository.save(movie4);
 
 
+        //Showtimes
         ShowTime showtime1Movie1 = new ShowTime();
         showtime1Movie1.setDate(LocalDate.now());
         showtime1Movie1.setTime(LocalTime.of(12, 0));
