@@ -64,7 +64,7 @@ public class InitData implements CommandLineRunner {
         movieRepository.save(movie2);
 
         Movie movie3 = new Movie();
-        movie3.setTitle("Spider Man: Into The Spiderverse");
+        movie3.setTitle("Spider Man");
         movie3.setDescription("Spider movie");
         movie3.setAgeLimit(13);
         movie3.setGenre("Adventure and Action");
