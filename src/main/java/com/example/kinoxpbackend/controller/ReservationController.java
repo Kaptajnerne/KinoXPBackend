@@ -1,7 +1,10 @@
 package com.example.kinoxpbackend.controller;
 
 import com.example.kinoxpbackend.model.Reservation;
+import com.example.kinoxpbackend.model.SeatShowtime;
 import com.example.kinoxpbackend.repository.ReservationRepository;
+import com.example.kinoxpbackend.repository.SeatShowtimeRepository;
+import com.example.kinoxpbackend.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +21,12 @@ public class ReservationController {
     @Autowired
     private ReservationRepository reservationRepository;
 
+    @Autowired
+    private SeatShowtimeRepository seatShowtimeRepository;
+
+    @Autowired
+    private ReservationService reservationService;
+
     @GetMapping()
     public ResponseEntity<List<Reservation>> findAll() {
         List<Reservation> reservations = reservationRepository.findAll();
@@ -30,9 +39,15 @@ public class ReservationController {
         return reservation.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
-    @PostMapping()
-    public ResponseEntity<Reservation> create(@RequestBody Reservation reservation) {
-        Reservation createdReservation = reservationRepository.save(reservation);
+    @PostMapping("/create")
+    public ResponseEntity<?> createReservation(@RequestBody Reservation reservation, @RequestParam List<Integer> seatShowtimeIds) {
+        List<SeatShowtime> selectedSeatShowtimes = seatShowtimeRepository.findAllById(seatShowtimeIds);
+        boolean isAgeWithinLimit = reservationService.isAgeWithinLimit(reservation.getAge(), selectedSeatShowtimes);
+
+        if (!isAgeWithinLimit) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Hey you little shit, your not old enough, so pack your shit and get going.");
+        }
+        Reservation createdReservation = reservationService.createReservation(reservation, selectedSeatShowtimes);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdReservation);
     }
 
