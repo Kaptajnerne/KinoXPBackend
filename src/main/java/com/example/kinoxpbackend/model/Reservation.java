@@ -1,6 +1,5 @@
 package com.example.kinoxpbackend.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -20,15 +19,9 @@ public class Reservation {
     private int age;
     private double fullPrice;
 
-    @ManyToOne
-    @JsonBackReference
-    @JoinColumn(name = "showtimeID")
-    private ShowTime showTime;
-
-    @ManyToOne
-    @JsonBackReference
-    @JoinColumn(name = "seatID")
-    private Seat seat;
+    @OneToMany(mappedBy = "reservation")
+    private Set<SeatShowtime> seatShowtimes = new HashSet<>();
 }
+
 
 
