@@ -35,9 +35,17 @@ public class ShowtimeController {
     private MovieRepository movieRepository;
 
     @GetMapping()
-    public ResponseEntity<List<Showtime>> findAll() {
-        List<Showtime> showtimes = showtimeRepository.findAll();
-        return ResponseEntity.ok().body(showtimes);
+    public ResponseEntity<List<Showtime>> findAll(@RequestParam(name = "movieID", required = false) Integer movieID) {
+        List<Showtime> showTimes;
+
+        // Check if movieID is provided in the request
+        if (movieID != null) {
+            showTimes = showtimeRepository.findByMovie_MovieID(movieID);
+        } else {
+            showTimes = showtimeRepository.findAll();
+        }
+
+        return ResponseEntity.ok().body(showTimes);
     }
 
     @GetMapping("/{id}")
