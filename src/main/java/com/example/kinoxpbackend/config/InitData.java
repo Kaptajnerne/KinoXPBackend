@@ -69,7 +69,7 @@ public class InitData implements CommandLineRunner {
         movie3.setAgeLimit(13);
         movie3.setGenre("Adventure and Action");
         movie3.setDuration(110);
-        movie3.setMovieImageUrl("https://static.wikia.nocookie.net/intothespiderverse/images/4/4b/Ezgif-4-4cc05fb7fc.jpg/revision/latest?cb=20230504055820");
+        movie3.setMovieImageUrl("https://m.media-amazon.com/images/M/MV5BMjMwNDkxMTgzOF5BMl5BanBnXkFtZTgwNTkwNTQ3NjM@._V1_.jpg");
         movieRepository.save(movie3);
 
         Movie movie4 = new Movie();
