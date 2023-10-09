@@ -1,4 +1,4 @@
-package com.example.kinoxpbackend;
+package com.example.kinoxpbackend.repository;
 
 import com.example.kinoxpbackend.model.Theater;
 import com.example.kinoxpbackend.repository.TheaterRepository;

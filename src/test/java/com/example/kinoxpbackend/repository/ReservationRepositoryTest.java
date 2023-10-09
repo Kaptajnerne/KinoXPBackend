@@ -1,4 +1,4 @@
-package com.example.kinoxpbackend;
+package com.example.kinoxpbackend.repository;
 
 import com.example.kinoxpbackend.model.Reservation;
 import com.example.kinoxpbackend.repository.ReservationRepository;

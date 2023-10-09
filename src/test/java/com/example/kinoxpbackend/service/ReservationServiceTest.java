@@ -1,4 +1,4 @@
-package com.example.kinoxpbackend;
+package com.example.kinoxpbackend.service;
 
 import com.example.kinoxpbackend.model.Movie;
 import com.example.kinoxpbackend.model.SeatShowtime;
