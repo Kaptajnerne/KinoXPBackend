@@ -111,13 +111,13 @@ public class InitData implements CommandLineRunner {
             }
         }
 
+        //ShowTime
         Showtime showtime2Movie1 = new Showtime();
         showtime2Movie1.setDate(LocalDate.now());
         showtime2Movie1.setTime(LocalTime.of(15, 0));
         showtime2Movie1.setTheater(smallTheater);
         showtime2Movie1.setMovie(movie1);
         showTimeRepository.save(showtime2Movie1);
-
 
         Showtime showtime3Movie1 = new Showtime();
         showtime3Movie1.setDate(LocalDate.now());
@@ -193,7 +193,3 @@ public class InitData implements CommandLineRunner {
         showTimeRepository.save(showtime3Movie4);
     }
 }
-
-
-     //Showtimes
-

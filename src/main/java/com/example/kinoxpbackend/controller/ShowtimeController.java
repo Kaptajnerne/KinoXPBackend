@@ -38,7 +38,7 @@ public class ShowtimeController {
     public ResponseEntity<List<Showtime>> findAll(@RequestParam(name = "movieID", required = false) Integer movieID) {
         List<Showtime> showTimes;
 
-        // Check if movieID is provided in the request
+        //Check if movieID is provided
         if (movieID != null) {
             showTimes = showtimeRepository.findByMovie_MovieID(movieID);
         } else {
