@@ -49,6 +49,8 @@ class ReservationControllerTest {
         verifyNoMoreInteractions(reservationRepository);
     }
 
+
+    //virker ikke
     @Test
     void testCreateReservation() throws Exception {
         Reservation reservation = new Reservation();
