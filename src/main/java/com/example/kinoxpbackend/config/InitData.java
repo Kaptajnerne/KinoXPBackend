@@ -122,7 +122,7 @@ public class InitData implements CommandLineRunner {
         Showtime showtime3Movie1 = new Showtime();
         showtime3Movie1.setDate(LocalDate.now());
         showtime3Movie1.setTime(LocalTime.of(18, 0));
-        showtime3Movie1.setTheater(smallTheater);
+        showtime3Movie1.setTheater(largeTheater);
         showtime3Movie1.setMovie(movie1);
         showTimeRepository.save(showtime3Movie1);
 
@@ -137,7 +137,7 @@ public class InitData implements CommandLineRunner {
         Showtime showtime2Movie2 = new Showtime();
         showtime2Movie2.setDate(LocalDate.now().plusDays(1));
         showtime2Movie2.setTime(LocalTime.of(15, 0));
-        showtime2Movie2.setTheater(smallTheater);
+        showtime2Movie2.setTheater(largeTheater);
         showtime2Movie2.setMovie(movie2);
         showTimeRepository.save(showtime2Movie2);
 
@@ -166,7 +166,7 @@ public class InitData implements CommandLineRunner {
         Showtime showtime3Movie3 = new Showtime();
         showtime3Movie3.setDate(LocalDate.now().plusDays(2));
         showtime3Movie3.setTime(LocalTime.of(18, 0));
-        showtime3Movie3.setTheater(smallTheater);
+        showtime3Movie3.setTheater(largeTheater);
         showtime3Movie3.setMovie(movie3);
         showTimeRepository.save(showtime3Movie3);
 
@@ -174,7 +174,7 @@ public class InitData implements CommandLineRunner {
         Showtime showtime1Movie4 = new Showtime();
         showtime1Movie4.setDate(LocalDate.now().plusDays(3));
         showtime1Movie4.setTime(LocalTime.of(12, 0));
-        showtime1Movie4.setTheater(smallTheater);
+        showtime1Movie4.setTheater(largeTheater);
         showtime1Movie4.setMovie(movie4);
         showTimeRepository.save(showtime1Movie4);
 
