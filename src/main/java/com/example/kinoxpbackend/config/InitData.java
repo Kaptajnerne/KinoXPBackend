@@ -30,8 +30,17 @@ public class InitData implements CommandLineRunner {
     @Autowired
     SeatShowtimeRepository seatShowTimeRepository;
 
+    @Autowired
+    AdminRepository adminRepository;
+
     @Override
     public void run(String... args) throws Exception {
+
+        //Admin
+        Admin admin = new Admin();
+        admin.setUsername("admin");
+        admin.setPassword("x");
+        adminRepository.save(admin);
 
         // Theaters
         Theater smallTheater = new Theater();
