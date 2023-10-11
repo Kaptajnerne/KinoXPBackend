@@ -4,7 +4,6 @@ import com.example.kinoxpbackend.model.Movie;
 import com.example.kinoxpbackend.model.SeatShowtime;
 import com.example.kinoxpbackend.model.Showtime;
 import com.example.kinoxpbackend.repository.SeatShowtimeRepository;
-import com.example.kinoxpbackend.service.ReservationService;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;

@@ -1,6 +1,5 @@
 package com.example.kinoxpbackend.controller;
 
-import com.example.kinoxpbackend.controller.AdminController;
 import com.example.kinoxpbackend.dto.AdminLoginRequest;
 import com.example.kinoxpbackend.model.Admin;
 import com.example.kinoxpbackend.service.AdminService;
@@ -14,7 +13,6 @@ import org.springframework.http.ResponseEntity;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
@@ -129,8 +127,6 @@ class AdminControllerTest {
         when(adminService.findByUsername("newadmin")).thenReturn(null);
         doAnswer(invocation -> {
             Admin createdAdmin = invocation.getArgument(0);
-            // Simulate saving the admin object to the database or performing necessary operations
-            // Ensure that the createdAdmin object has an ID assigned or any other modifications if necessary
             return null;
         }).when(adminService).createAdmin(any(Admin.class));
 

@@ -1,7 +1,6 @@
 package com.example.kinoxpbackend.repository;
 
 import com.example.kinoxpbackend.model.Theater;
-import com.example.kinoxpbackend.repository.TheaterRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;

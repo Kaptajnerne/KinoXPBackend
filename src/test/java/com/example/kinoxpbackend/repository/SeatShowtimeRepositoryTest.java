@@ -3,7 +3,6 @@ package com.example.kinoxpbackend.repository;
 import com.example.kinoxpbackend.model.Seat;
 import com.example.kinoxpbackend.model.SeatShowtime;
 import com.example.kinoxpbackend.model.Showtime;
-import com.example.kinoxpbackend.repository.SeatShowtimeRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
