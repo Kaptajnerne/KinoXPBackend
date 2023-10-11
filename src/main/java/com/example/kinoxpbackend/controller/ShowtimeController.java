@@ -1,6 +1,7 @@
 package com.example.kinoxpbackend.controller;
 
 import com.example.kinoxpbackend.dto.SeatShowtimeDTO;
+import com.example.kinoxpbackend.dto.ShowtimeDTO;
 import com.example.kinoxpbackend.model.*;
 import com.example.kinoxpbackend.repository.MovieRepository;
 import com.example.kinoxpbackend.repository.ShowtimeRepository;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/showtimes")
@@ -33,18 +35,32 @@ public class ShowtimeController {
     private MovieRepository movieRepository;
 
     @GetMapping()
-    public ResponseEntity<List<Showtime>> findAll(@RequestParam(name = "movieID", required = false) Integer movieID) {
-        List<Showtime> showTimes;
+    public ResponseEntity<List<ShowtimeDTO>> findAllShowtimes(@RequestParam(name = "movieID", required = false) Integer movieID) {
+        List<Showtime> showtimes;
 
-        //Check if movieID is provided
         if (movieID != null) {
-            showTimes = showtimeRepository.findByMovie_MovieID(movieID);
+            showtimes = showtimeRepository.findByMovie_MovieID(movieID);
         } else {
-            showTimes = showtimeRepository.findAll();
+            showtimes = showtimeRepository.findAll();
         }
 
-        return ResponseEntity.ok().body(showTimes);
+        List<ShowtimeDTO> showtimeDTOs = showtimes.stream()
+                .map(showtime -> {
+                    ShowtimeDTO dto = new ShowtimeDTO();
+                    dto.setShowtimeID(showtime.getShowtimeID());
+                    dto.setDate(showtime.getDate());
+                    dto.setTime(showtime.getTime());
+                    dto.setMovie(showtime.getMovie());
+                    dto.setTheater(showtime.getTheater()); // Include Theater
+                    return dto;
+                })
+                .collect(Collectors.toList());
+
+        return ResponseEntity.ok().body(showtimeDTOs);
     }
+
+
+
 
     @GetMapping("/{id}")
     public ResponseEntity<Showtime> findById(@PathVariable int id) {
