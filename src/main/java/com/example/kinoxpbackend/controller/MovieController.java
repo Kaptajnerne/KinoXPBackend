@@ -38,15 +38,16 @@ public class MovieController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> delete(@PathVariable int id) {
+    public ResponseEntity<String> deleteMovie(@PathVariable int id) {
         Optional<Movie> movie = movieRepository.findById(id);
         if (movie.isPresent()) {
-            movieRepository.deleteById(id);
+            movieRepository.delete(movie.get());
             return ResponseEntity.ok("Movie deleted");
         } else {
             return ResponseEntity.notFound().build();
         }
     }
+
 
     @PutMapping("/{id}")
     public ResponseEntity<Movie> update(@PathVariable int id, @RequestBody Movie updatedMovie) {
