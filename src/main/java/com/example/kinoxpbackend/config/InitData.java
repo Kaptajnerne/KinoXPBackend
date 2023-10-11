@@ -135,6 +135,27 @@ public class InitData implements CommandLineRunner {
         showtime3Movie1.setMovie(movie1);
         showTimeRepository.save(showtime3Movie1);
 
+        //Seats
+        for (int line = 1; line <= largeTheater.getNumberOfLines(); line++) {
+            for (int seat = 1; seat <= largeTheater.getSeatsPrLine(); seat++) {
+                Seat s2 = new Seat();
+                s2.setTheater(largeTheater);
+                s2.setPrice(100);
+                s2.setLine(line);
+                s2.setSeat(seat);
+                s2.setReserved(false);
+                seatRepository.save(s2);
+
+                //Associate Seat and Showtime SeatShowTime
+                SeatShowtime seatShowTime = new SeatShowtime();
+                seatShowTime.setSeat(s2);
+                seatShowTime.setShowTime(showtime3Movie1);
+                seatShowTime.setPrice(100);
+                seatShowTime.setReserved(false);
+                seatShowTimeRepository.save(seatShowTime);
+
+            }
+        }
 
         Showtime showtime1Movie2 = new Showtime();
         showtime1Movie2.setDate(LocalDate.now().plusDays(1));
