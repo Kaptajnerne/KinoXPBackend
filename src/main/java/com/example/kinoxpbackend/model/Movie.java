@@ -1,6 +1,8 @@
 package com.example.kinoxpbackend.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -23,4 +25,9 @@ public class Movie {
     private int duration; // In minutes
     @Column(length = 1000)
     private String movieImageUrl;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "movie", cascade = CascadeType.REMOVE, orphanRemoval = true)
+    private Set<Showtime> showtimes = new HashSet<>();
+
 }
