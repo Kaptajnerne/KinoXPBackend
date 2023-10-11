@@ -95,7 +95,7 @@ class TheaterControllerTest {
     void testUpdate() throws Exception {
         Theater theater = new Theater();
         theater.setTheaterID(1);
-        theater.setSeatsPrLine(12); // Updated seatsPrLine value
+        theater.setSeatsPrLine(12);
         theater.setNumberOfLines(5);
 
         when(theaterRepository.findById(1)).thenReturn(Optional.of(theater));

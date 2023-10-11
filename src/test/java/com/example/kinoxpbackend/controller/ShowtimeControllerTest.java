@@ -14,9 +14,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-import com.example.kinoxpbackend.dto.SeatShowtimeDTO;
 import java.lang.reflect.Field;
-import static org.mockito.Mockito.mock;
 
 
 import java.util.ArrayList;
@@ -45,12 +43,7 @@ class ShowtimeControllerTest {
     @MockBean
     private MovieRepository movieRepository;
 
-// ...
-
-
-
-// ...
-
+    //virker ikke
     @Test
     void testCreateShowtime() throws Exception {
         SeatShowtimeDTO seatShowtimeDTO = new SeatShowtimeDTO();
@@ -76,8 +69,6 @@ class ShowtimeControllerTest {
         field.set(object, value);
         field.setAccessible(false);
     }
-
-
 
 
     @Test
