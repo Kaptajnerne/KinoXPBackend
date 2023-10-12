@@ -1,5 +1,6 @@
 package com.example.kinoxpbackend.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -7,9 +8,9 @@ import lombok.Setter;
 import java.util.HashSet;
 import java.util.Set;
 
+@Entity
 @Getter
 @Setter
-@Entity
 public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,9 +20,15 @@ public class Reservation {
     private int age;
     private double fullPrice;
 
-    @OneToMany(mappedBy = "reservation")
+    @ManyToMany
+    @JoinTable(
+            name = "reservation_seat_showtimes",
+            joinColumns = @JoinColumn(name = "reservation_id"),
+            inverseJoinColumns = @JoinColumn(name = "seat_showtime_id")
+    )
     private Set<SeatShowtime> seatShowtimes = new HashSet<>();
 }
+
 
 
 

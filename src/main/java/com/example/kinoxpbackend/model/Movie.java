@@ -29,5 +29,4 @@ public class Movie {
     @JsonIgnore
     @OneToMany(mappedBy = "movie", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private Set<Showtime> showtimes = new HashSet<>();
-
 }

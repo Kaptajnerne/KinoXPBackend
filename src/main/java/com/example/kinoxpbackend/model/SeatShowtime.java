@@ -1,5 +1,6 @@
 package com.example.kinoxpbackend.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -23,7 +24,4 @@ public class SeatShowtime {
     @JoinColumn(name = "showtime_id")
     private Showtime showTime;
 
-    @ManyToOne(cascade = CascadeType.REMOVE)
-    @JoinColumn(name = "reservation_id")
-    private Reservation reservation;
 }
