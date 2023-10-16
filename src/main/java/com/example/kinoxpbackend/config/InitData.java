@@ -120,36 +120,28 @@ public class InitData implements CommandLineRunner {
             }
         }
 
-        //ShowTime
         Showtime showtime2Movie1 = new Showtime();
         showtime2Movie1.setDate(LocalDate.now());
-        showtime2Movie1.setTime(LocalTime.of(15, 0));
-        showtime2Movie1.setTheater(smallTheater);
+        showtime2Movie1.setTime(LocalTime.of(18, 0));
+        showtime2Movie1.setTheater(largeTheater);
         showtime2Movie1.setMovie(movie1);
         showTimeRepository.save(showtime2Movie1);
-
-        Showtime showtime3Movie1 = new Showtime();
-        showtime3Movie1.setDate(LocalDate.now());
-        showtime3Movie1.setTime(LocalTime.of(18, 0));
-        showtime3Movie1.setTheater(largeTheater);
-        showtime3Movie1.setMovie(movie1);
-        showTimeRepository.save(showtime3Movie1);
 
         //Seats
         for (int line = 1; line <= largeTheater.getNumberOfLines(); line++) {
             for (int seat = 1; seat <= largeTheater.getSeatsPrLine(); seat++) {
-                Seat s2 = new Seat();
-                s2.setTheater(largeTheater);
-                s2.setPrice(100);
-                s2.setLine(line);
-                s2.setSeat(seat);
-                s2.setReserved(false);
-                seatRepository.save(s2);
+                Seat s1 = new Seat();
+                s1.setTheater(largeTheater);
+                s1.setPrice(100);
+                s1.setLine(line);
+                s1.setSeat(seat);
+                s1.setReserved(false);
+                seatRepository.save(s1);
 
                 //Associate Seat and Showtime SeatShowTime
                 SeatShowtime seatShowTime = new SeatShowtime();
-                seatShowTime.setSeat(s2);
-                seatShowTime.setShowTime(showtime3Movie1);
+                seatShowTime.setSeat(s1);
+                seatShowTime.setShowTime(showtime2Movie1);
                 seatShowTime.setPrice(100);
                 seatShowTime.setReserved(false);
                 seatShowTimeRepository.save(seatShowTime);
@@ -157,12 +149,41 @@ public class InitData implements CommandLineRunner {
             }
         }
 
+        Showtime showtime3Movie1 = new Showtime();
+        showtime3Movie1.setDate(LocalDate.now().plusDays(1));
+        showtime3Movie1.setTime(LocalTime.of(12, 0));
+        showtime3Movie1.setTheater(smallTheater);
+        showtime3Movie1.setMovie(movie1);
+        showTimeRepository.save(showtime3Movie1);
+
+
         Showtime showtime1Movie2 = new Showtime();
         showtime1Movie2.setDate(LocalDate.now().plusDays(1));
         showtime1Movie2.setTime(LocalTime.of(12, 0));
         showtime1Movie2.setTheater(smallTheater);
-        showtime1Movie2.setMovie(movie2);
+        showtime1Movie2.setMovie(movie1);
         showTimeRepository.save(showtime1Movie2);
+
+        for (int line = 1; line <= smallTheater.getNumberOfLines(); line++) {
+            for (int seat = 1; seat <= smallTheater.getSeatsPrLine(); seat++) {
+                Seat s1 = new Seat();
+                s1.setTheater(smallTheater);
+                s1.setPrice(100);
+                s1.setLine(line);
+                s1.setSeat(seat);
+                s1.setReserved(false);
+                seatRepository.save(s1);
+
+                //Associate Seat and Showtime SeatShowTime
+                SeatShowtime seatShowTime = new SeatShowtime();
+                seatShowTime.setSeat(s1);
+                seatShowTime.setShowTime(showtime1Movie2);
+                seatShowTime.setPrice(100);
+                seatShowTime.setReserved(false);
+                seatShowTimeRepository.save(seatShowTime);
+
+            }
+        }
 
         Showtime showtime2Movie2 = new Showtime();
         showtime2Movie2.setDate(LocalDate.now().plusDays(1));
@@ -171,20 +192,63 @@ public class InitData implements CommandLineRunner {
         showtime2Movie2.setMovie(movie2);
         showTimeRepository.save(showtime2Movie2);
 
+        for (int line = 1; line <= largeTheater.getNumberOfLines(); line++) {
+            for (int seat = 1; seat <= largeTheater.getSeatsPrLine(); seat++) {
+                Seat s1 = new Seat();
+                s1.setTheater(largeTheater);
+                s1.setPrice(100);
+                s1.setLine(line);
+                s1.setSeat(seat);
+                s1.setReserved(false);
+                seatRepository.save(s1);
+
+                //Associate Seat and Showtime SeatShowTime
+                SeatShowtime seatShowTime = new SeatShowtime();
+                seatShowTime.setSeat(s1);
+                seatShowTime.setShowTime(showtime2Movie2);
+                seatShowTime.setPrice(100);
+                seatShowTime.setReserved(false);
+                seatShowTimeRepository.save(seatShowTime);
+
+            }
+        }
+
         Showtime showtime3Movie2 = new Showtime();
         showtime3Movie2.setDate(LocalDate.now().plusDays(1));
-        showtime3Movie2.setTime(LocalTime.of(18, 0));
-        showtime3Movie2.setTheater(smallTheater);
+        showtime3Movie2.setTime(LocalTime.of(15, 0));
+        showtime3Movie2.setTheater(largeTheater);
         showtime3Movie2.setMovie(movie2);
         showTimeRepository.save(showtime3Movie2);
+        //No seats for this one
 
 
         Showtime showtime1Movie3 = new Showtime();
         showtime1Movie3.setDate(LocalDate.now().plusDays(2));
         showtime1Movie3.setTime(LocalTime.of(12, 0));
-        showtime1Movie3.setTheater(smallTheater);
+        showtime1Movie3.setTheater(largeTheater);
         showtime1Movie3.setMovie(movie3);
         showTimeRepository.save(showtime1Movie3);
+
+        for (int line = 1; line <= largeTheater.getNumberOfLines(); line++) {
+            for (int seat = 1; seat <= largeTheater.getSeatsPrLine(); seat++) {
+                Seat s1 = new Seat();
+                s1.setTheater(largeTheater);
+                s1.setPrice(100);
+                s1.setLine(line);
+                s1.setSeat(seat);
+                s1.setReserved(false);
+                seatRepository.save(s1);
+
+                //Associate Seat and Showtime SeatShowTime
+                SeatShowtime seatShowTime = new SeatShowtime();
+                seatShowTime.setSeat(s1);
+                seatShowTime.setShowTime(showtime1Movie3);
+                seatShowTime.setPrice(100);
+                seatShowTime.setReserved(false);
+                seatShowTimeRepository.save(seatShowTime);
+
+            }
+        }
 
         Showtime showtime2Movie3 = new Showtime();
         showtime2Movie3.setDate(LocalDate.now().plusDays(2));
@@ -193,10 +257,31 @@ public class InitData implements CommandLineRunner {
         showtime2Movie3.setMovie(movie3);
         showTimeRepository.save(showtime2Movie3);
 
+        for (int line = 1; line <= smallTheater.getNumberOfLines(); line++) {
+            for (int seat = 1; seat <= smallTheater.getSeatsPrLine(); seat++) {
+                Seat s1 = new Seat();
+                s1.setTheater(smallTheater);
+                s1.setPrice(100);
+                s1.setLine(line);
+                s1.setSeat(seat);
+                s1.setReserved(false);
+                seatRepository.save(s1);
+
+                //Associate Seat and Showtime SeatShowTime
+                SeatShowtime seatShowTime = new SeatShowtime();
+                seatShowTime.setSeat(s1);
+                seatShowTime.setShowTime(showtime2Movie3);
+                seatShowTime.setPrice(100);
+                seatShowTime.setReserved(false);
+                seatShowTimeRepository.save(seatShowTime);
+
+            }
+        }
+
         Showtime showtime3Movie3 = new Showtime();
         showtime3Movie3.setDate(LocalDate.now().plusDays(2));
         showtime3Movie3.setTime(LocalTime.of(18, 0));
-        showtime3Movie3.setTheater(largeTheater);
+        showtime3Movie3.setTheater(smallTheater);
         showtime3Movie3.setMovie(movie3);
         showTimeRepository.save(showtime3Movie3);
 
@@ -208,6 +293,27 @@ public class InitData implements CommandLineRunner {
         showtime1Movie4.setMovie(movie4);
         showTimeRepository.save(showtime1Movie4);
 
+        for (int line = 1; line <= largeTheater.getNumberOfLines(); line++) {
+            for (int seat = 1; seat <= largeTheater.getSeatsPrLine(); seat++) {
+                Seat s1 = new Seat();
+                s1.setTheater(largeTheater);
+                s1.setPrice(100);
+                s1.setLine(line);
+                s1.setSeat(seat);
+                s1.setReserved(false);
+                seatRepository.save(s1);
+
+                //Associate Seat and Showtime SeatShowTime
+                SeatShowtime seatShowTime = new SeatShowtime();
+                seatShowTime.setSeat(s1);
+                seatShowTime.setShowTime(showtime1Movie4);
+                seatShowTime.setPrice(100);
+                seatShowTime.setReserved(false);
+                seatShowTimeRepository.save(seatShowTime);
+
+            }
+        }
+
         Showtime showtime2Movie4 = new Showtime();
         showtime2Movie4.setDate(LocalDate.now().plusDays(3));
         showtime2Movie4.setTime(LocalTime.of(15, 0));
@@ -215,11 +321,33 @@ public class InitData implements CommandLineRunner {
         showtime2Movie4.setMovie(movie4);
         showTimeRepository.save(showtime2Movie4);
 
+        for (int line = 1; line <= smallTheater.getNumberOfLines(); line++) {
+            for (int seat = 1; seat <= smallTheater.getSeatsPrLine(); seat++) {
+                Seat s1 = new Seat();
+                s1.setTheater(smallTheater);
+                s1.setPrice(100);
+                s1.setLine(line);
+                s1.setSeat(seat);
+                s1.setReserved(false);
+                seatRepository.save(s1);
+
+                //Associate Seat and Showtime SeatShowTime
+                SeatShowtime seatShowTime = new SeatShowtime();
+                seatShowTime.setSeat(s1);
+                seatShowTime.setShowTime(showtime2Movie4);
+                seatShowTime.setPrice(100);
+                seatShowTime.setReserved(false);
+                seatShowTimeRepository.save(seatShowTime);
+
+            }
+        }
+
         Showtime showtime3Movie4 = new Showtime();
         showtime3Movie4.setDate(LocalDate.now().plusDays(3));
-        showtime3Movie4.setTime(LocalTime.of(20, 0));
+        showtime3Movie4.setTime(LocalTime.of(18, 0));
         showtime3Movie4.setTheater(smallTheater);
         showtime3Movie4.setMovie(movie4);
         showTimeRepository.save(showtime3Movie4);
+
     }
 }

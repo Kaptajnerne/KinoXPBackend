@@ -60,8 +60,6 @@ public class ShowtimeController {
     }
 
 
-
-
     @GetMapping("/{id}")
     public ResponseEntity<Showtime> findById(@PathVariable int id) {
         Optional<Showtime> showTime = showtimeRepository.findById(id);

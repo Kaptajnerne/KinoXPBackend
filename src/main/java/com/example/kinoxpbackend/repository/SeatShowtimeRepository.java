@@ -6,7 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface SeatShowtimeRepository extends JpaRepository<SeatShowtime, Integer>{
-
     List<SeatShowtime> findByShowTimeShowtimeID(int showtimeId);
-
 }

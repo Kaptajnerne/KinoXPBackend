@@ -31,6 +31,4 @@ public class SeatShowtimeController {
             return ResponseEntity.ok(seatShowtimes);
         }
     }
-
-
 }
