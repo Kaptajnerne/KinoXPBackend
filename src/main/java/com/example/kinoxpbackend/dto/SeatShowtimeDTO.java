@@ -10,7 +10,6 @@ import java.util.List;
 @Getter
 @Setter
 public class SeatShowtimeDTO {
-
     private Showtime showtime;
     private List<Seat> seats;
 }

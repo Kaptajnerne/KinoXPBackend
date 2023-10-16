@@ -47,6 +47,9 @@ public class ReservationController {
         if (!isAgeWithinLimit) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Hey you little shit, your not old enough, so pack your shit and get going.");
         }
+        for (SeatShowtime seatShowtime : selectedSeatShowtimes) {
+            seatShowtime.setReserved(true);
+        }
         Reservation createdReservation = reservationService.createReservation(reservation, selectedSeatShowtimes);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdReservation);
     }

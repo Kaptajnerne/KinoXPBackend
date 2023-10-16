@@ -4,10 +4,7 @@ import com.example.kinoxpbackend.model.SeatShowtime;
 import com.example.kinoxpbackend.repository.SeatShowtimeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,4 +22,13 @@ public class SeatShowtimeController {
         return ResponseEntity.ok().body(seatShowtimes);
     }
 
+    @GetMapping("/getByShowtimeId")
+    public ResponseEntity<List<SeatShowtime>> getSeatShowtimesByShowtimeId(@RequestParam int showtimeId) {
+        List<SeatShowtime> seatShowtimes = seatShowtimeRepository.findByShowTimeShowtimeID(showtimeId);
+        if (seatShowtimes.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        } else {
+            return ResponseEntity.ok(seatShowtimes);
+        }
+    }
 }

@@ -15,19 +15,18 @@ public class ReservationService {
     ReservationRepository reservationRepository;
 
     public Reservation createReservation(Reservation reservation, List<SeatShowtime> selectedSeatShowtimes) {
-        reservation.setName(reservation.getName());
-        reservation.setAge(reservation.getAge());
-        reservation.setEmail(reservation.getEmail());
-        reservation.setSeatShowtimes(new HashSet<>(selectedSeatShowtimes));
         int totalPrice = calculatePrice(selectedSeatShowtimes);
-        reservation.setFullPrice(totalPrice);
 
         if (!isAgeWithinLimit(reservation.getAge(), selectedSeatShowtimes)) {
-            throw new IllegalArgumentException("Hey you little shit, your not old enough, so pack your shit and get going.");
+            throw new IllegalArgumentException("Hey you're not old enough, so pack your stuff and get going.");
         }
-        reservation = reservationRepository.save(reservation);
 
-        return reservation;
+        reservation.setFullPrice(totalPrice);
+        reservation.setSeatShowtimes(new HashSet<>(selectedSeatShowtimes));
+
+        Reservation createdReservation = reservationRepository.save(reservation);
+
+        return createdReservation;
     }
 
     public int calculatePrice(List<SeatShowtime> selectedSeatShowtimes) {
