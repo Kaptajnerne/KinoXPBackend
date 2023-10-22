@@ -4,7 +4,6 @@ import com.example.kinoxpbackend.dto.AdminLoginRequestDTO;
 import com.example.kinoxpbackend.model.Admin;
 import com.example.kinoxpbackend.repository.AdminRepository;
 import com.example.kinoxpbackend.repository.SeatRepository;
-import com.example.kinoxpbackend.service.AdminService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
